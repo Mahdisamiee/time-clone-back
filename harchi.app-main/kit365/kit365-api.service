@@ -1,0 +1,14 @@
+[Unit]
+Description=This is related to kit365 api service
+
+[Service]
+Environment="MAPIR_KEY=!">
+Environment="kit365_debug=True"
+WorkingDirectory=/home/zerobits01/kit365/
+ExecStart=/home/zerobits01/.kit365/bin/python3 ./manage.py runserver 8000
+Restart=on-failure
+User=zerobits01
+Group=zerobits01
+
+[Install]
+WantedBy=multi-user.target

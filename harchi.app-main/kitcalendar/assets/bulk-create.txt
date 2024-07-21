@@ -1,0 +1,11 @@
+import json
+from kitcalendar.models import PersianCalendar
+with open('./kitcalendar/assets/events.json', 'r', encoding='utf-8') as f:
+    calendar_data = json.load(f)
+calendar_data['PersianCalendar'][1]
+insertion = [PersianCalendar(**item) for item in calendar_data['PersianCalendar']]
+insertion = [PersianCalendar(**item) for item in calendar_data['PersianCalendar'] if 'year' not in item.keys()]
+len(insertion)
+len(calendar_data['PersianCalendar'])
+objs = PersianCalendar.objects.bulk_create(insertion)
+%history
